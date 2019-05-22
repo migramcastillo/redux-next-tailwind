@@ -1,13 +1,25 @@
+import { connect } from "react-redux";
+import { setCurrency } from "../store";
+
 const SelectCurrency = (props) => {
 
+    const { currency, setCurrency } = props;
+
     return (
-        <select className="select-box" defaultValue="USD">
-            <option value="USD">USD</option>
-            <option value="MXN">MXN</option>
-            <option value="CAN">CAN</option>
-            <option value="EUR">EUR</option>
+        <select className="select-box" onChange={(e) => { setCurrency({ currency: e.target.value }) }} defaultValue={currency}>
+            <option value="usd">USD</option>
+            <option value="mxn">MXN</option>
+            <option value="cad">CAD</option>
+            <option value="eur">EUR</option>
         </select>
     );
 }
 
-export default SelectCurrency;
+function mapStateToProps (state) {
+    const { currency } = state;
+    return { currency }
+}
+
+const mapDispatchToProps = { setCurrency };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCurrency);

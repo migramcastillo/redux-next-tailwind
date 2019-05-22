@@ -1,12 +1,27 @@
+import { connect } from "react-redux";
+
+const labels = {
+    es: "Comprar",
+    en: "Buy",
+    br: "Macaco"
+}
+
 const BuyButton = (props) => {
 
-    const { clicked } = props;
+    const { clicked, language } = props;
+
+    const label = labels[language];
 
     return (
         <button onClick={clicked} className="buy-button">
-            Comprar
+            {label}
         </button>
     );
 }
 
-export default BuyButton;
+function mapStateToProps (state) {
+    const { language } = state;
+    return { language }
+}
+
+export default connect(mapStateToProps, null)(BuyButton);

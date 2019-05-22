@@ -10,4 +10,6 @@ const Price = (props) => {
     return <span className={classes.join(" ")}>{stringPrice}</span>;
 }
 
+
+
 export default Price;
