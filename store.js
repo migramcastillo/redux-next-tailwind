@@ -26,7 +26,7 @@ export const reducer = (state = exampleInitialState, action) => {
       })
     case actionTypes.SET_LANGUAGE:
       return Object.assign({}, state, {
-        currency: action.language
+        language: action.language
       })
     default:
       return state
